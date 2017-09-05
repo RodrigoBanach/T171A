@@ -13,7 +13,7 @@ namespace Rodrigo_banach.Controllers
     public class SuppliersController : Controller
     {
         private readonly EFContext _context = new EFContext();
-
+        //
         // GET: Suppliers
         public ActionResult Index()
         {
