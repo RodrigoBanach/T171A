@@ -68,4 +68,49 @@ namespace Rodrigo_banach.Controllers
         }
     }
 
+        public ActionResult Details(long? id)
+        {
+        if (id == null)
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var supplier = _context.Suppliers.Find(id.Value);
+
+        if (id == null)
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+        }
+
+        return View(supplier);
+    }
+
+
+
+         public ActionResult Delete(long? id)
+        {
+        if (id == null)
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        var supplier = _context.Suppliers.Find(id.Value);
+
+        if (id == null)
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+        }
+
+        return View(supplier);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(long? id)
+        {
+        Supplier supplier = _context.Suppliers.Find(id.Value);
+
+        _context.Suppliers.Remove(supplier);
+        _context.SaveChanges();
+        return RedirectToAction("Index");
+    }
+
 }
