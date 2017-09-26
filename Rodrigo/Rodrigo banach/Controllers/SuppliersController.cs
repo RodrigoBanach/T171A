@@ -25,7 +25,7 @@ namespace Rodrigo_banach.Controllers
 
         public ActionResult Create()
         {
-             return View();
+            return View();
         }
 
         [HttpPost]
@@ -44,9 +44,9 @@ namespace Rodrigo_banach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-                var supplier = _context.Suppliers.Find(id.Value);
+            var supplier = _context.Suppliers.Find(id.Value);
 
-                if (id == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
@@ -58,7 +58,7 @@ namespace Rodrigo_banach.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Supplier supplier)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.Entry(supplier).State = EntityState.Modified;
                 _context.SaveChanges();
@@ -66,51 +66,51 @@ namespace Rodrigo_banach.Controllers
 
             return RedirectToAction("Index");
         }
-    }
 
         public ActionResult Details(long? id)
         {
-        if (id == null)
-        {
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        }
-        var supplier = _context.Suppliers.Find(id.Value);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var supplier = _context.Suppliers.Find(id.Value);
 
-        if (id == null)
-        {
-            return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-        }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
 
-        return View(supplier);
-    }
-
-
-
-         public ActionResult Delete(long? id)
-        {
-        if (id == null)
-        {
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        }
-        var supplier = _context.Suppliers.Find(id.Value);
-
-        if (id == null)
-        {
-            return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            return View(supplier);
         }
 
-        return View(supplier);
+
+
+        public ActionResult Delete(long? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var supplier = _context.Suppliers.Find(id.Value);
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            return View(supplier);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(long? id)
+        public ActionResult Delete(Supplier supplier)
         {
-        Supplier supplier = _context.Suppliers.Find(id.Value);
+            Supplier sup = _context.Suppliers.Find(supplier.SupplierId);
 
-        _context.Suppliers.Remove(supplier);
-        _context.SaveChanges();
-        return RedirectToAction("Index");
+            _context.Suppliers.Remove(sup);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 
 }
