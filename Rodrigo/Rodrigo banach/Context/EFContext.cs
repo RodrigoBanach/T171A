@@ -11,9 +11,12 @@ namespace Rodrigo_banach.Context
     {
         public DbSet<Category> Categories { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         public EFContext() : base("ASP_NET_MVC_CS")
         {
+            Database.SetInitializer<EFContext>(
+            new DropCreateDatabaseIfModelChanges<EFContext>());
 
 
         }

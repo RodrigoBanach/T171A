@@ -11,5 +11,7 @@ namespace Rodrigo_banach.Models
         public long SupplierId { get; set; }
         [Required]
         public string Name { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
     }
 }
