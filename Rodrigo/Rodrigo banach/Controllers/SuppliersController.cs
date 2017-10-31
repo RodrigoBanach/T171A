@@ -91,7 +91,8 @@ namespace Rodrigo_banach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var supplier = _context.Suppliers.Find(id.Value);
+
+            var supplier = _context.Suppliers.Find(id);
 
             if (id == null)
             {
@@ -103,11 +104,11 @@ namespace Rodrigo_banach.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Supplier supplier)
+        public ActionResult Delete(long id)
         {
-            Supplier sup = _context.Suppliers.Find(supplier.SupplierId);
+            Supplier suppliers = _context.Suppliers.Find(id);
 
-            _context.Suppliers.Remove(sup);
+            _context.Suppliers.Remove(suppliers);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

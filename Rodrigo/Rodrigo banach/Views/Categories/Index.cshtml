@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Rodrigo_banach.Models.Category>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Categorias";
 }
 
-<h2>Index </h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Criar nova categoria", "Create")
+    @Html.ActionLink("Criar Nova Categoria", "Create")
 </p>
 <table class="table">
     <tr>
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.CategoryId }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.CategoryId }) |
-            @Html.ActionLink("Deletar", "Delete", new { id=item.CategoryId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CategoryId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId })
         </td>
     </tr>
 }
