@@ -73,7 +73,9 @@ namespace Rodrigo_banach.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var supplier = _context.Suppliers.Find(id.Value);
+            //var supplier = _context.Suppliers.Find(id.Value);
+            var supplier = _context.Suppliers.Where(f => f.SupplierId == id)
+                .Include("Products.Category").First();
 
             if (id == null)
             {

@@ -3,24 +3,28 @@
 @{
     ViewBag.Title = "Details";
 }
+<h2>Detalhes</h2>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+            <h4>Fabricante</h4>
+        </div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-<h2>Details</h2>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-<div>
-    <h4>Supplier</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            </dl>
+        </div>
+        @Html.Partial("~/Views/Products/_PorSupplier.cshtml", Model.Products.ToList())
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.SupplierId }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SupplierId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

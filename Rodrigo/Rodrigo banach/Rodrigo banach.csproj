@@ -229,6 +229,8 @@
     <Content Include="Views\Categories\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\_PorSupplier.cshtml" />
+    <Content Include="Views\Products\_PorCategory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
